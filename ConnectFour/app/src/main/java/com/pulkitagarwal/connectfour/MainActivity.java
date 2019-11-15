@@ -9,15 +9,21 @@ import android.widget.ImageView;
 
 public class MainActivity extends AppCompatActivity {
 
+
+    int activePlayer = 1;
+
     public void dropIn(View view){
-
-        int activePlayer = 0;
-
-        int[] state = {2,2,2,2,2,2,2,2,2};
-
         ImageView image = (ImageView) view;
         image.setTranslationY(-1000f);
-        image.setImageResource(R.drawable.yellow);
+
+        if(activePlayer == 0){
+            image.setImageResource(R.drawable.yellow);
+            activePlayer = 1;
+        } else {
+            image.setImageResource(R.drawable.red);
+            activePlayer = 0;
+        }
+
         image.animate().translationYBy(1000f).rotation(360).setDuration(300);
     }
     @Override
